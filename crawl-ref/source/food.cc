@@ -46,7 +46,7 @@ static void _heal_from_food(int hp_amt);
 void make_hungry(int hunger_amount, bool suppress_msg,
                  bool magic)
 {
-    if (crawl_state.disables[DIS_HUNGER])
+    if (true)
         return;
 
 #if TAG_MAJOR_VERSION == 34
