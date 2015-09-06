@@ -4236,6 +4236,8 @@ void contaminate_player(int change, bool controlled, bool msg)
 {
     ASSERT(!crawl_state.game_is_arena());
 
+    change = (change*3)/2;
+
     int old_amount = you.magic_contamination;
     int old_level  = get_contamination_level();
     int new_level  = 0;
