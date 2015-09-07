@@ -10,7 +10,7 @@ const Branch branches[NUM_BRANCHES] =
     //  floor colour, rock colour
     //  travel shortcut, ambient noise level
 
-    { BRANCH_DUNGEON, NUM_BRANCHES, 0, 0, 15, 0,
+    { BRANCH_DUNGEON, NUM_BRANCHES, 0, 0, 5, 0,
       BFLAG_NONE,
       NUM_FEATURES, DNGN_EXIT_DUNGEON,
       "Dungeon", "the Dungeon", "D",
@@ -18,7 +18,7 @@ const Branch branches[NUM_BRANCHES] =
       LIGHTGREY, BROWN,
       'D', 0 },
 
-    { BRANCH_TEMPLE, BRANCH_DUNGEON, 4, 7, 1, 5,
+    { BRANCH_TEMPLE, BRANCH_DUNGEON, 1, 3, 1, 5,
       BFLAG_NO_ITEMS,
       DNGN_ENTER_TEMPLE, DNGN_EXIT_TEMPLE,
       "Temple", "the Ecumenical Temple", "Temple",
@@ -26,7 +26,7 @@ const Branch branches[NUM_BRANCHES] =
       LIGHTGREY, BROWN,
       'T', 0 },
 
-    { BRANCH_ORC, BRANCH_DUNGEON, 9, 12, 4, 8,
+    { BRANCH_ORC, BRANCH_DUNGEON, 3, 4, 4, 8,
       BFLAG_SPOTTY,
       DNGN_ENTER_ORC, DNGN_EXIT_ORC,
       "Orcish Mines", "the Orcish Mines", "Orc",
@@ -52,7 +52,7 @@ const Branch branches[NUM_BRANCHES] =
       'K', 0 },
 #endif
 
-    { BRANCH_LAIR, BRANCH_DUNGEON, 8, 11, 8, 10,
+    { BRANCH_LAIR, BRANCH_DUNGEON, 1, 2, 8, 10,
       BFLAG_NONE,
       DNGN_ENTER_LAIR, DNGN_EXIT_LAIR,
       "Lair", "the Lair of Beasts", "Lair",
@@ -100,7 +100,7 @@ const Branch branches[NUM_BRANCHES] =
       GREEN, BROWN,
       'M', -5 },
 
-    { BRANCH_VAULTS, BRANCH_DUNGEON, 13, 14, 5, 19,
+    { BRANCH_VAULTS, BRANCH_DUNGEON, 3, 4, 5, 19,
       BFLAG_DANGEROUS_END,
       DNGN_ENTER_VAULTS, DNGN_EXIT_VAULTS,
       "Vaults", "the Vaults", "Vaults",
@@ -291,7 +291,7 @@ const Branch branches[NUM_BRANCHES] =
       LIGHTGREY, BROWN, // set per-map
       '8', 0 },
 
-    { BRANCH_DEPTHS, BRANCH_DUNGEON, 15, 15, 5, 22,
+    { BRANCH_DEPTHS, BRANCH_DUNGEON, 5, 5, 5, 22,
       BFLAG_NONE,
       DNGN_ENTER_DEPTHS, DNGN_EXIT_DEPTHS,
       "Depths", "the Depths", "Depths",
