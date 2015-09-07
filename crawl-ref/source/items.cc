@@ -1633,6 +1633,8 @@ static bool _put_item_in_inv(item_def& it, int quant_got, bool quiet, bool& put_
         }
         else
             _check_note_item(it);
+
+        identify_inventory();
         return true;
     }
 

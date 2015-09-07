@@ -111,6 +111,8 @@ void give_job_equipment(job_type job)
     item_list items;
     for (const string& it : _job_def(job).equipment)
         items.add_item(it);
+    items.add_item("potion of curing");
+    items.add_item("scroll of teleportation");
     for (size_t i = 0; i < items.size(); i++)
     {
         const item_spec spec = items.get_item(i);
