@@ -2594,6 +2594,8 @@ static void _recharge_xp_evokers(int exp)
 
 void gain_exp(unsigned int exp_gained, unsigned int* actual_gain)
 {
+    exp_gained *= 3;
+
     if (crawl_state.game_is_arena())
         return;
 
@@ -4235,8 +4237,6 @@ string describe_contamination(int cont)
 void contaminate_player(int change, bool controlled, bool msg)
 {
     ASSERT(!crawl_state.game_is_arena());
-
-    change = (change*3)/2;
 
     int old_amount = you.magic_contamination;
     int old_level  = get_contamination_level();
