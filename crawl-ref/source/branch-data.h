@@ -100,7 +100,7 @@ const Branch branches[NUM_BRANCHES] =
       GREEN, BROWN,
       'M', -5 },
 
-    { BRANCH_VAULTS, BRANCH_DUNGEON, 3, 4, 5, 19,
+    { BRANCH_VAULTS, BRANCH_DUNGEON, 3, 4, 1, 19,
       BFLAG_DANGEROUS_END,
       DNGN_ENTER_VAULTS, DNGN_EXIT_VAULTS,
       "Vaults", "the Vaults", "Vaults",
@@ -117,7 +117,7 @@ const Branch branches[NUM_BRANCHES] =
       'B', -7 },
 #endif
 
-    { BRANCH_CRYPT, BRANCH_VAULTS, 2, 3, 3, 19,
+    { BRANCH_CRYPT, BRANCH_VAULTS, 1, 1, 1, 19,
       BFLAG_DANGEROUS_END,
       DNGN_ENTER_CRYPT, DNGN_EXIT_CRYPT,
       "Crypt", "the Crypt", "Crypt",
@@ -125,7 +125,7 @@ const Branch branches[NUM_BRANCHES] =
       LIGHTGREY, BROWN,
       'C', -3 },
 
-    { BRANCH_TOMB, BRANCH_CRYPT, 3, 3, 3, 21,
+    { BRANCH_TOMB, BRANCH_CRYPT, 1, 1, 1, 21,
       BFLAG_ISLANDED | BFLAG_DANGEROUS_END | BFLAG_NO_SHAFTS,
       DNGN_ENTER_TOMB, DNGN_EXIT_TOMB,
       "Tomb", "the Tomb of the Ancients", "Tomb",
@@ -173,7 +173,7 @@ const Branch branches[NUM_BRANCHES] =
       MAGENTA, MAGENTA,
       'Y', 0 },
 
-    { BRANCH_ZOT, BRANCH_DEPTHS, 5, 5, 5, 27,
+    { BRANCH_ZOT, BRANCH_DEPTHS, 1, 1, 1, 27,
       BFLAG_DANGEROUS_END,
       DNGN_ENTER_ZOT, DNGN_EXIT_ZOT,
       "Zot", "the Realm of Zot", "Zot",
@@ -291,7 +291,7 @@ const Branch branches[NUM_BRANCHES] =
       LIGHTGREY, BROWN, // set per-map
       '8', 0 },
 
-    { BRANCH_DEPTHS, BRANCH_DUNGEON, 5, 5, 5, 22,
+    { BRANCH_DEPTHS, BRANCH_DUNGEON, 5, 5, 1, 22,
       BFLAG_NONE,
       DNGN_ENTER_DEPTHS, DNGN_EXIT_DEPTHS,
       "Depths", "the Depths", "Depths",
