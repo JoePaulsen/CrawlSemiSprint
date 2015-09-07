@@ -1002,6 +1002,14 @@ void handle_time()
                     spawn_random_monsters();
     }
 
+    if (_div(base_time, 200) > _div(old_time, 200)) 
+    {
+        if (random_range(0,2) == 0)
+        {
+            drain_player(1, true, true);
+        }
+    }
+
     // Labyrinth and Abyss maprot.
     if (player_in_branch(BRANCH_LABYRINTH) || player_in_branch(BRANCH_ABYSS))
         forget_map(true);

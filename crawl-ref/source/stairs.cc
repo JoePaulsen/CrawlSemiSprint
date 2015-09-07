@@ -523,6 +523,9 @@ void take_stairs(dungeon_feature_type force_stair, bool going_up,
         // Shafts are one-time-use.
         mpr("The shaft crumbles and collapses.");
         _maybe_destroy_trap(you.pos());
+    } else {
+        drain_player(20, true, true);
+        contaminate_player(1500, false);
     }
 
     // Maybe perform the entry sequence (we check that they have enough runes
