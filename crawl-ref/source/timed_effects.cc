@@ -730,11 +730,11 @@ static void _handle_magic_contamination()
     // but won't cause glow on its own -- otherwise it'd spam the player
     // with messages about contamination oscillating near zero.
     if (you.magic_contamination && player_has_orb())
-        added_contamination += 13;
+        added_contamination += 30;
 
     // Normal dissipation
     if (!you.duration[DUR_INVIS] && !you.duration[DUR_HASTE])
-        added_contamination -= 25;
+        added_contamination -= 50;
 
     // Scaling to turn length
     added_contamination = div_rand_round(added_contamination * you.time_taken,
@@ -792,17 +792,30 @@ static void _magic_contamination_effects()
     // we're meaner now, what with explosions and whatnot, but
     // we dial down the contamination a little faster if its actually
     // mutating you.  -- GDL
-    contaminate_player(-(random2(contam / 4) + 1000));
+
+    //now that contamination can occur whenever, make sure the contamination level is appropriate for lowever levels too --greedo
+    int contamRedux = round((contam*2)/3);
+    contaminate_player(-contamRedux);
 }
 // Checks if the player should be hit with magic contaimination effects,
 // then actually does it if they should be.
 static void _handle_magic_contamination(int /*time_delta*/)
 {
     // [ds] Move magic contamination effects closer to b26 again.
-    const bool glow_effect = get_contamination_level() > 1
-            && x_chance_in_y(you.magic_contamination, 12000);
+    //const bool glow_effect = get_contamination_level() > 1
+    //        && x_chance_in_y(you.magic_contamination, 12000);
 
-    if (glow_effect)
+    bool suffersContaminationEffects = false;
+    //now ALWAYS call handle magic_contam
+    if (you.magic_contamination > 100) {
+        int contamCompare = you.magic_contamination/100; // to stop numbers from getting silly huge
+        contamCompare = min(contamCompare,70); // cap chance to about 50/50
+        mprf(MSGCH_GOD, "testing pow: %d",contamCompare);
+        mprf(MSGCH_GOD, "testing pow after cube: %d",(int) pow(contamCompare,3));
+        suffersContaminationEffects = x_chance_in_y(pow(contamCompare,3), 700*1000);
+    }
+
+    if (suffersContaminationEffects)
     {
         if (is_sanctuary(you.pos()))
         {
@@ -810,7 +823,10 @@ static void _handle_magic_contamination(int /*time_delta*/)
                             "energies until Zin's power calms it.");
         }
         else
+        {
+            mprf(MSGCH_GOD, "contamnation");
             _magic_contamination_effects();
+        }
     }
 }
 
