@@ -3750,7 +3750,7 @@ static void _builder_items()
 
     if (player_in_branch(BRANCH_DUNGEON))
     {
-        items_levels = items_levels*3 - 1;
+        items_levels = items_levels*3;
     }
 
     if (player_in_branch(BRANCH_VAULTS))
