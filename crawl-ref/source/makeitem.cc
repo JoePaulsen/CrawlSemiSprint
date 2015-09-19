@@ -1890,20 +1890,20 @@ int items(bool allow_uniques,
     else
     {
         ASSERT(force_type == OBJ_RANDOM);
-        // Total weight: 1960
+        // Total weight: 1960 // actually it's totally messed with now
         item.base_type = random_choose_weighted(
-                                     1, OBJ_RODS,
-                                     9, OBJ_STAVES,
-                                    30, OBJ_BOOKS,
-                                    50, OBJ_JEWELLERY,
-                                    70, OBJ_WANDS,
-                                   140, OBJ_FOOD,
-                                   212, OBJ_ARMOUR,
-                                   212, OBJ_WEAPONS,
-                                   176, OBJ_POTIONS,
-                                   300, OBJ_MISSILES,
-                                   320, OBJ_SCROLLS,
-                                   440, OBJ_GOLD,
+                                      2, OBJ_RODS,
+                                      20, OBJ_STAVES,
+                                      200, OBJ_BOOKS,
+                                      1000, OBJ_JEWELLERY,
+                                      300, OBJ_WANDS,
+                                      1, OBJ_FOOD,
+                                      3000, OBJ_ARMOUR,
+                                      3000, OBJ_WEAPONS,
+                                      300, OBJ_POTIONS,
+                                      3000, OBJ_MISSILES,
+                                      300, OBJ_SCROLLS,
+                                      2000, OBJ_GOLD,
                                      0);
 
         // misc items placement wholly dependent upon current depth {dlb}:

@@ -1020,10 +1020,7 @@ void handle_time()
 
     if (_div(base_time, 200) > _div(old_time, 200)) 
     {
-        if (random_range(0,2) == 0)
-        {
-            drain_player(1, true, true);
-        }
+        drain_player(1, true, true);
     }
 
     // Labyrinth and Abyss maprot.

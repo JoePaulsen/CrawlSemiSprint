@@ -1973,7 +1973,7 @@ int player_prot_life(bool calc_unid, bool temp, bool items)
 // want to go past 6 (see below). -- bwr
 int player_movement_speed()
 {
-    int mv = 10;
+    int mv = 12;
 
     // transformations
     if (you.form == TRAN_BAT)
@@ -2594,7 +2594,8 @@ static void _recharge_xp_evokers(int exp)
 
 void gain_exp(unsigned int exp_gained, unsigned int* actual_gain)
 {
-    exp_gained *= 3;
+    exp_gained *= 5;
+    exp_gained /= 2;
 
     if (crawl_state.game_is_arena())
         return;

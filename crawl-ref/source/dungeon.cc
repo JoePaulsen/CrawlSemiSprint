@@ -3746,6 +3746,13 @@ static void _builder_items()
     int items_levels = env.absdepth0;
     int items_wanted = _num_items_wanted(items_levels);
 
+    items_wanted *= 3;
+
+    if (player_in_branch(BRANCH_DUNGEON))
+    {
+        items_levels = items_levels*3 - 1;
+    }
+
     if (player_in_branch(BRANCH_VAULTS))
     {
         items_levels *= 15;

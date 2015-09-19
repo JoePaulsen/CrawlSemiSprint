@@ -62,13 +62,28 @@ monster_type pick_monster(level_id place, mon_pick_vetoer veto)
     if (!place.is_valid())
         die("trying to pick a monster from %s", place.describe().c_str());
 #endif
-    return pick_monster_from(population[place.branch].pop, place.depth, veto);
+
+
+    int depthToCheck = place.depth;
+    if (place.branch == BRANCH_DUNGEON) {
+        mprf(MSGCH_GOD, "pick monster 1");
+        depthToCheck = depthToCheck*3 - 1;
+    }
+
+    return pick_monster_from(population[place.branch].pop, depthToCheck, veto);
 }
 
 monster_type pick_monster(level_id place, monster_picker &picker, mon_pick_vetoer veto)
 {
     ASSERT(place.is_valid());
-    return picker.pick_with_veto(population[place.branch].pop, place.depth, MONS_0, veto);
+
+    int depthToCheck = place.depth;
+    if (place.branch == BRANCH_DUNGEON) {
+        mprf(MSGCH_GOD, "pick monster 2");
+        depthToCheck = depthToCheck*3 - 1;
+    }
+
+    return picker.pick_with_veto(population[place.branch].pop, depthToCheck, MONS_0, veto);
 }
 
 monster_type pick_monster_from(const pop_entry *fpop, int depth,
