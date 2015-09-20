@@ -447,7 +447,9 @@ bool drain_player(int power, bool announce_full, bool ignore_protection)
 
     if (power > 0)
     {
-        mpr("You feel drained.");
+        if (power > 2) {
+            mpr("You feel drained.");
+        }
         xom_is_stimulated(15);
 
         you.attribute[ATTR_XP_DRAIN] += power;

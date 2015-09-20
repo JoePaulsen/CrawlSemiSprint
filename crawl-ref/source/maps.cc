@@ -733,7 +733,6 @@ static int greedoTransformBranchDepth(branch_type branch, int oldDepth) {
         //depth = depth*3 + random_range(0,3) - 2;
 
         if (myBranch == BRANCH_DUNGEON) {
-            mprf(MSGCH_GOD, "test999");
             depth = oldDepth*3 + random_range(0,3) - 2;
             depth = max(depth,1);
             depth = min(15,depth);
@@ -824,8 +823,6 @@ mapref_vector find_maps_for_tag(const string tag,
     level_id place = level_id::current();
 
     place.depth = greedoTransformBranchDepth(place.branch,place.depth);
-
-    mprf(MSGCH_GOD, "place depth: %d",place.depth);
 
     for (const map_def &mapdef : vdefs)
     {

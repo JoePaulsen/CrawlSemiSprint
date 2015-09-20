@@ -66,7 +66,6 @@ monster_type pick_monster(level_id place, mon_pick_vetoer veto)
 
     int depthToCheck = place.depth;
     if (place.branch == BRANCH_DUNGEON) {
-        mprf(MSGCH_GOD, "pick monster 1");
         depthToCheck = depthToCheck*3 - 1;
     }
 
@@ -79,7 +78,6 @@ monster_type pick_monster(level_id place, monster_picker &picker, mon_pick_vetoe
 
     int depthToCheck = place.depth;
     if (place.branch == BRANCH_DUNGEON) {
-        mprf(MSGCH_GOD, "pick monster 2");
         depthToCheck = depthToCheck*3 - 1;
     }
 
