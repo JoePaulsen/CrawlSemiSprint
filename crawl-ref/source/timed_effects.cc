@@ -53,6 +53,7 @@
 #include "travel.h"
 #include "viewchar.h"
 #include "unwind.h"
+#include "math.h"
 
 /**
  * Choose a random, spooky hell effect message, print it, and make a loud noise
