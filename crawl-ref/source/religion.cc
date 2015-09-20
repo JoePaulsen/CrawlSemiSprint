@@ -1317,8 +1317,9 @@ static void _set_penance(god_type god, int val)
 
 static void _inc_gift_timeout(int val)
 {
-    if (200 - you.gift_timeout < val)
-        you.gift_timeout = 200;
+    val *= 2;
+    if (400 - you.gift_timeout < val)
+        you.gift_timeout = 400;
     else
         you.gift_timeout += val;
 }
@@ -2522,6 +2523,8 @@ static void _gain_piety_point()
  */
 bool gain_piety(int original_gain, int denominator, bool should_scale_piety)
 {
+    original_gain *= 3;
+
     if (original_gain <= 0)
         return false;
 
@@ -2563,6 +2566,8 @@ bool gain_piety(int original_gain, int denominator, bool should_scale_piety)
  */
 void lose_piety(int pgn)
 {
+    pgn *= 3;
+
     if (pgn <= 0)
         return;
 
@@ -3411,6 +3416,7 @@ void join_religion(god_type which_god, bool immediate)
             you.piety_max[you.religion] = 15;
         you.piety_hysteresis = 0;
         you.gift_timeout = 0;
+        gain_piety(10, 1, false);
     }
 
     set_god_ability_slots();    // remove old god's slots, reserve new god's

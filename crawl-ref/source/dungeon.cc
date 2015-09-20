@@ -345,6 +345,7 @@ bool builder(bool enable_random_maps, dungeon_feature_type dest_stairs_type)
     return false;
 }
 
+
 static bool _build_level_vetoable(bool enable_random_maps,
                                   dungeon_feature_type dest_stairs_type)
 {
@@ -3498,8 +3499,10 @@ static int _place_uniques()
         const mapref_vector uniques_available =
             find_maps_for_tag("place_unique", true, true);
 
-        if (!x_chance_in_y((int)uniques_available.size(), B))
-            break;
+        mprf(MSGCH_GOD, "uniques: %d",(int)uniques_available.size());
+
+        //if (!x_chance_in_y((int)uniques_available.size(), B))
+        //    break;
 
         const map_def *uniq_map = random_map_for_tag("place_unique", true);
         if (!uniq_map)

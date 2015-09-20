@@ -50,6 +50,8 @@ static map_section_type _apply_vault_definition(
 
 static bool _resolve_map(map_def &def);
 
+static int greedoTransformBranchDepth(branch_type branch, int oldDepth);
+
 static bool _map_safe_vault_place(const map_def &map,
                                   const coord_def &c,
                                   const coord_def &size);
@@ -704,6 +706,106 @@ void strip_all_maps()
         mapdef.strip();
 }
 
+static int greedoTransformBranchDepth(branch_type branch, int oldDepth) {
+
+  //..this is programmed terribly, I don't care
+
+        //just doing these in case I want to rip out this function and put it elsewhere
+        branch_type myBranch = branch;
+        int depth = 1;
+
+        /*BRANCH_DUNGEON,
+        BRANCH_LAIR,
+        BRANCH_SWAMP,
+        BRANCH_SHOALS,
+        BRANCH_SNAKE,
+        BRANCH_SPIDER,
+        BRANCH_SLIME,
+        BRANCH_ORC,
+        BRANCH_ELF,
+        BRANCH_VAULTS,
+        BRANCH_CRYPT,
+        BRANCH_DEPTHS,
+        BRANCH_ZOT,
+        */
+
+        //this is in each check because I don't want to break extended
+        //depth = depth*3 + random_range(0,3) - 2;
+
+        if (myBranch == BRANCH_DUNGEON) {
+            mprf(MSGCH_GOD, "test999");
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(15,depth);
+        }
+
+        if (myBranch == BRANCH_LAIR) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(8,depth);
+        }
+        if (myBranch == BRANCH_SWAMP) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(5,depth);
+        }
+        if (myBranch == BRANCH_SHOALS) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(4,depth);
+        }
+        if (myBranch == BRANCH_SNAKE) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(4,depth);
+        }
+        if (myBranch == BRANCH_SPIDER) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(4,depth);
+        }
+        if (myBranch == BRANCH_SLIME) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(6,depth);
+        }
+
+        if (myBranch == BRANCH_ORC) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(4,depth);
+        }
+        if (myBranch == BRANCH_ELF) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(3,depth);
+        }
+        if (myBranch == BRANCH_VAULTS) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(5,depth);
+        }
+
+        if (myBranch == BRANCH_CRYPT) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(3,depth);
+        }
+
+        if (myBranch == BRANCH_DEPTHS) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(5,depth);
+        }
+
+        if (myBranch == BRANCH_ZOT) {
+            depth = oldDepth*3 + random_range(0,3) - 2;
+            depth = max(depth,1);
+            depth = min(5,depth);
+        }
+        return depth;
+}
+
 vector<string> find_map_matches(const string &name)
 {
     vector<string> matches;
@@ -720,6 +822,10 @@ mapref_vector find_maps_for_tag(const string tag,
 {
     mapref_vector maps;
     level_id place = level_id::current();
+
+    place.depth = greedoTransformBranchDepth(place.branch,place.depth);
+
+    mprf(MSGCH_GOD, "place depth: %d",place.depth);
 
     for (const map_def &mapdef : vdefs)
     {
@@ -1152,8 +1258,10 @@ const map_def *random_map_for_tag(const string &tag,
                                   bool check_chance,
                                   maybe_bool extra)
 {
+    level_id greedoFake = level_id::current();
+    greedoFake.depth = greedoTransformBranchDepth(greedoFake.branch,greedoFake.depth);
     return _random_map_by_selector(
-        map_selector::by_tag(tag, check_depth, check_chance, extra));
+        map_selector::by_tag(tag, check_depth, check_chance, extra,greedoFake));
 }
 
 int map_count()
