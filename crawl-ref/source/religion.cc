@@ -2527,7 +2527,9 @@ static void _gain_piety_point()
  */
 bool gain_piety(int original_gain, int denominator, bool should_scale_piety)
 {
-    original_gain *= 3;
+    if (!you_worship(GOD_RU)) {
+      original_gain *= 3;
+    }
 
     if (original_gain <= 0)
         return false;

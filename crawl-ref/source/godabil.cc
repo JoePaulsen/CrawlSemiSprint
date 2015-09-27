@@ -6283,7 +6283,7 @@ void ru_reset_sacrifice_timer(bool clear_timer)
         // based on piety. This extra delay stacks with any added delay for
         // previous rejections.
         added_delay = you.props[RU_SACRIFICE_PENALTY_KEY].get_int();
-        added_delay += (max(100, static_cast<int>(you.piety))) / 3;
+        added_delay += (max(100, static_cast<int>(you.piety)))*3;
         you.props[RU_SACRIFICE_PENALTY_KEY] = added_delay;
     }
 

@@ -2148,7 +2148,7 @@ item_def* monster_die(monster* mons, killer_type killer,
                 ASSERT(you.props.exists(RU_SACRIFICE_PROGRESS_KEY));
                 int current_progress =
                         you.props[RU_SACRIFICE_PROGRESS_KEY].get_int();
-                you.props[RU_SACRIFICE_PROGRESS_KEY] = current_progress + 1;
+                you.props[RU_SACRIFICE_PROGRESS_KEY] = current_progress + 9;
             }
 
             // Randomly bless a follower.
