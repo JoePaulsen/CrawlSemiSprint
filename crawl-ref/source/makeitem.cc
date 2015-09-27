@@ -694,15 +694,15 @@ static void _generate_missile_item(item_def& item, int force_type,
     else
     {
         item.sub_type =
-            random_choose_weighted(50, MI_STONE,
-                                   20, MI_ARROW,
-                                   12, MI_BOLT,
-                                   12, MI_SLING_BULLET,
-                                   10, MI_NEEDLE,
-                                   3,  MI_TOMAHAWK,
-                                   2,  MI_JAVELIN,
-                                   1,  MI_THROWING_NET,
-                                   1,  MI_LARGE_ROCK,
+            random_choose_weighted(500, MI_STONE,
+                                   200, MI_ARROW,
+                                   120, MI_BOLT,
+                                   120, MI_SLING_BULLET,
+                                   70, MI_NEEDLE,
+                                   20,  MI_TOMAHAWK,
+                                   12,  MI_JAVELIN,
+                                   7,  MI_THROWING_NET,
+                                   6,  MI_LARGE_ROCK,
                                    0);
     }
 
@@ -1896,7 +1896,7 @@ int items(bool allow_uniques,
                                       3000, OBJ_ARMOUR,
                                       3000, OBJ_WEAPONS,
                                       300, OBJ_POTIONS,
-                                      3000, OBJ_MISSILES,
+                                      1800, OBJ_MISSILES,
                                       600, OBJ_SCROLLS,
                                       2000, OBJ_GOLD,
                                      0);
