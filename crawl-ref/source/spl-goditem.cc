@@ -36,6 +36,9 @@
 #include "view.h"
 #include "viewchar.h"
 
+//greedo
+#include "shout.h"
+
 static void _print_holy_pacification_speech(const string key,
                                             monster* mon,
                                             msg_channel_type channel)
@@ -969,8 +972,10 @@ bool cast_smiting(int pow, monster* mons)
 
     if (success)
     {
-        // damage at 0 Invo ranges from 9-12 (avg 10), to 9-72 (avg 40) at 27.
-        int damage_increment = div_rand_round(pow, 8);
+        //not accurate anymore
+        //damage at 0 Invo ranges from 9-12 (avg 10), to 9-72 (avg 40) at 27.
+        int damage_increment = (div_rand_round(pow, 5));
+        noisy(20, mons->pos());
         mons->hurt(&you, 6 + roll_dice(3, damage_increment));
         if (mons->alive())
             print_wounds(mons);

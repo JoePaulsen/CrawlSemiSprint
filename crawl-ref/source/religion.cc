@@ -1312,6 +1312,10 @@ static void _inc_penance(int val)
 
 static void _set_penance(god_type god, int val)
 {
+    //gods don't give a shit about low level characters.
+    if (you.experience_level < 10) {
+      val = 0;
+    }
     you.penance[god] = val;
 }
 
@@ -3062,6 +3066,8 @@ void excommunication(bool voluntary, god_type new_god, bool immediate)
     check_selected_skills();
 }
 
+
+
 static string _sacrifice_message(string msg, const string& itname, bool glowing,
                                  bool plural, piety_gain_t piety_gain)
 {
@@ -3416,8 +3422,21 @@ void join_religion(god_type which_god, bool immediate)
             you.piety_max[you.religion] = 15;
         you.piety_hysteresis = 0;
         you.gift_timeout = 0;
-        gain_piety(10, 1, false);
+        if (!(is_good_god(old_god) && is_good_god(which_god))) {
+          gain_piety(10, 1, false);
+        }
     }
+
+    //greedo extra stuff
+    if (you_worship(GOD_ASHENZARI)) {
+      int ashScrolls;
+      for (int i = 0; i < 8; i++) {
+        ashScrolls = items(false, OBJ_SCROLLS, SCR_REMOVE_CURSE, 1);
+        move_item_to_grid(&ashScrolls, you.pos());  
+      }
+    }
+    
+    
 
     set_god_ability_slots();    // remove old god's slots, reserve new god's
 #ifdef DGL_WHEREIS
