@@ -2094,6 +2094,17 @@ item_def* monster_die(monster* mons, killer_type killer,
 
             _fire_kill_conducts(*mons, killer, killer_index, gives_player_xp);
 
+            //hell dwarves gain hp on killing like makhleb, although to a much smaller degree
+            if (you.species == SP_DEEP_DWARF) {
+                if (gives_player_xp && !mons_is_object(mons->type)) {
+                    int monExp = mons->get_experience_level();
+                    int hp_heal = random2(max(0,(monExp*5)/4));
+                    if (monExp >= you.experience_level/3 - 1) {
+                        inc_hp(hp_heal,true);
+                    }
+                }
+            }
+
             // Divine health and mana restoration doesn't happen when
             // killing born-friendly monsters.
             if (gives_player_xp

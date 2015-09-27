@@ -3432,7 +3432,7 @@ void join_religion(god_type which_god, bool immediate)
     //greedo extra stuff
     if (you_worship(GOD_ASHENZARI)) {
       int ashScrolls;
-      for (int i = 0; i < 8; i++) {
+      for (int i = 0; i < 4; i++) {
         ashScrolls = items(false, OBJ_SCROLLS, SCR_REMOVE_CURSE, 1);
         move_item_to_grid(&ashScrolls, you.pos());  
       }

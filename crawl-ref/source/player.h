@@ -992,7 +992,7 @@ void dec_mp(int mp_loss, bool silent = false);
 void drain_mp(int mp_loss);
 
 void inc_mp(int mp_gain, bool silent = false);
-void inc_hp(int hp_gain);
+void inc_hp(int hp_gain, bool overrideDeepDwarf = false);
 void flush_mp();
 
 void rot_hp(int hp_loss);

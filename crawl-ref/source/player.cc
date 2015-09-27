@@ -3959,9 +3959,13 @@ void inc_mp(int mp_gain, bool silent)
 // Note that "max_too" refers to the base potential, the actual
 // resulting max value is subject to penalties, bonuses, and scalings.
 // To avoid message spam, don't take notes when HP increases.
-void inc_hp(int hp_gain)
+void inc_hp(int hp_gain, bool overrideDeepDwarf)
 {
     ASSERT(!crawl_state.game_is_arena());
+
+    if (you.species == SP_DEEP_DWARF && !overrideDeepDwarf) {
+        hp_gain = 0;
+    }
 
     if (hp_gain < 1)
         return;
