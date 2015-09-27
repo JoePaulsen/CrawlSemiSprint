@@ -84,6 +84,8 @@ static bool _build_level_vetoable(bool enable_random_maps,
 static void _build_dungeon_level(dungeon_feature_type dest_stairs_type);
 static bool _valid_dungeon_level();
 
+
+static void _place_greedo_altars();
 static bool _builder_by_type();
 static bool _builder_normal();
 static void _builder_items();
@@ -2257,6 +2259,8 @@ static void _build_dungeon_level(dungeon_feature_type dest_stairs_type)
 
         _place_traps();
 
+        _place_greedo_altars();
+
         // Any vault-placement activity must happen before this check.
         _dgn_verify_connectivity(nvaults);
 
@@ -3117,6 +3121,27 @@ static void _place_gozag_shop(dungeon_feature_type stair)
 static bool _shaft_known(int depth)
 {
     return coinflip() && x_chance_in_y(3, depth);
+}
+
+static void _place_greedo_altars()
+{
+    int numAltars = 3;
+    for (int derp = 0; derp < numAltars; derp++)
+    {
+        int tries;
+        coord_def pos;
+        for (tries = 0; tries < 200; ++tries)
+        {
+            pos.x = random2(GXM);
+            pos.y = random2(GYM);
+            if (in_bounds(pos)
+                && grd(pos) == DNGN_FLOOR)
+            {
+                break;
+            }
+        }
+        grd(pos) = _pick_an_altar();
+    }
 }
 
 static void _place_traps()
