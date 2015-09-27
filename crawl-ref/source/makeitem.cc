@@ -1346,12 +1346,7 @@ static void _generate_food_item(item_def& item, int force_quant, int force_type)
     // Determine sub_type:
     if (force_type == OBJ_RANDOM)
     {
-        item.sub_type = random_choose_weighted( 30, FOOD_BREAD_RATION,
-                                                10, FOOD_FRUIT,
-                                                30, FOOD_MEAT_RATION,
-                                                15, FOOD_BEEF_JERKY,
-                                                10, FOOD_PIZZA,
-                                                 5, FOOD_ROYAL_JELLY,
+        item.sub_type = random_choose_weighted( 10, FOOD_PIZZA,
                                                  0);
     }
     else
