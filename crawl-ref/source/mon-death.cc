@@ -2095,7 +2095,7 @@ item_def* monster_die(monster* mons, killer_type killer,
             _fire_kill_conducts(*mons, killer, killer_index, gives_player_xp);
 
             //hell dwarves gain hp on killing like makhleb, although to a much smaller degree
-            if (you.species == SP_DEEP_DWARF) {
+            if (you.species == SP_HELL_DWARF) {
                 if (gives_player_xp && !mons_is_object(mons->type)) {
                     int monExp = mons->get_experience_level();
                     int hp_heal = random2(max(0,(monExp*5)/4));

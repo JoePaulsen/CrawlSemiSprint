@@ -3123,7 +3123,7 @@ vector<talent> your_talents(bool check_confused, bool include_unusable)
     if (player_mutation_level(MUT_MUMMY_RESTORATION))
         _add_talent(talents, ABIL_MUMMY_RESTORATION, check_confused);
 
-    if (you.species == SP_DEEP_DWARF)
+    if (you.species == SP_HELL_DWARF)
         _add_talent(talents, ABIL_RECHARGING, check_confused);
 
     if (you.species == SP_FORMICID

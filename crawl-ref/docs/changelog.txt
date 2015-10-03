@@ -172,8 +172,8 @@ Monsters
   while confused.
 * Basic mummies no longer have death curses.
 * Alligators now come in pairs.
-* Jorgrun is no longer a deep dwarf, and now regenerates normally.
-* Deep dwarf ghosts now regenerate normally.
+* Jorgrun is no longer a hell dwarf, and now regenerates normally.
+* hell dwarf ghosts now regenerate normally.
 * Hell beasts no longer have randomized speeds.
 * Salamander mystics, firebrands, and stormcallers now all have normal land
   move speed and fast swimming speed.
@@ -756,7 +756,7 @@ Monsters
   Symbol of Torment and Chain Lightning even when you are not in sight.
 * Komodo dragons now bite harder but don't sicken the player.
 * Purple ugly things deal extra damage in lieu of a sickness attack.
-* Deep dwarf death knights are now just death knights.
+* hell dwarf death knights are now just death knights.
 * Manticores now move as fast as the player, and have an unlimited number of
   spike volleys.
 * Base draconians can become nonbase draconians with experience.
@@ -1180,7 +1180,7 @@ Monsters
     - Vashnia, leader of a squad of naga sharpshooters with translocational
       ability to match.
 * Moths of suppression, rock worms, lava fish, lemures, jellyfish, grey rats,
-  spiny worms, giant amoebae, deep dwarf berserkers, agate snails, giant
+  spiny worms, giant amoebae, hell dwarf berserkers, agate snails, giant
   centipedes, rotting devils, clay golems, and stone golems are no more.
 * Ball lightnings are no longer permanently confused, instead seeking out
   targets like giant spores.
@@ -1568,7 +1568,7 @@ Monsters
       "retching" status effect that prevents food consumption; they
       generate a cloud of miasma on death.
     - Spectral things move at their full base monster speed.
-    - Deep dwarf death knights gain slightly better attack power and
+    - hell dwarf death knights gain slightly better attack power and
       starting equipment, and now come with a band of undead.
     - Flying skulls get a slight HP boost and a larger attack power boost.
     - Ghouls inflict rot half as often.
@@ -1671,7 +1671,7 @@ Monsters
 * Removed monsters:
     - Laboratory rats.
     - War dogs (replaced by wolves with essentially matching stats).
-    - Deep dwarf scions, necromancers, and artificers.
+    - hell dwarf scions, necromancers, and artificers.
     - Deep elf soldiers.
     - A large number of vault-specific monsters.
 * Imps and other weak monsters no longer appear in Pan.
@@ -3985,7 +3985,7 @@ Breaks saves and bones compatibility.
 
 0.5 Highlights
 --------------
-* New species and job: Deep Dwarf, Artificer.
+* New species and job: hell dwarf, Artificer.
 * Removed three species: Gnome, Grey Elf, Ogre-Mage.
 * Several cool new uniques and other monsters.
 * Several great new portal vaults.

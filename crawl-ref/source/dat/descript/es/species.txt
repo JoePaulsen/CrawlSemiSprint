@@ -3,7 +3,7 @@ Centaur
 
 Veloces, fuertes y corpulentos, necesitan más comida que otras especies.
 %%%%
-Deep Dwarf
+hell dwarf
 
 Viven en las profundidades de la tierra y no pueden regenerar su salud de forma
 natural, pero son resistentes y tienen herramientas para curarse.

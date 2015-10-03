@@ -4089,7 +4089,7 @@ enum species_type
     SP_TENGU,
     SP_MERFOLK,
     SP_VAMPIRE,
-    SP_DEEP_DWARF,
+    SP_HELL_DWARF,
     SP_FELID,
     SP_OCTOPODE,
 #if TAG_MAJOR_VERSION == 34

@@ -1953,7 +1953,7 @@ void make_book_Kiku_gift(item_def &book, bool first)
         bool can_bleed = you.species != SP_GARGOYLE
                          && you.species != SP_GHOUL
                          && you.species != SP_MUMMY;
-        bool can_regen = you.species != SP_DEEP_DWARF
+        bool can_regen = you.species != SP_HELL_DWARF
                          && you.species != SP_MUMMY;
         bool pain = coinflip();
 

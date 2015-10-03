@@ -3,7 +3,7 @@ Centaur
 
 Greiti, stiprūs ir stambūs, jie reikalauja daugiau maisto negu kitos rūšys.
 %%%%
-Deep Dwarf
+hell dwarf
 
 Jie gyvena giliai po žeme ir negali regeneruoti sveikatos natūraliai, bet jie
 yra gajūs ir turi įrankius gydymuisi.

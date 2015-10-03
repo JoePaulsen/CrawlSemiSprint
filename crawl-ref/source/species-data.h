@@ -65,9 +65,9 @@ static const map<species_type, species_def> species_data =
       SK_BOWS, SK_CROSSBOWS, SK_SLINGS },
 } },
 
-{ SP_DEEP_DWARF, {
-    "DD",
-    "Deep Dwarf", "Dwarven", "Dwarf",
+{ SP_HELL_DWARF, {
+    "HD",
+    "Hell Dwarf", "Hellish", "Dwarf",
     SPF_NONE,
     -1, 2, 0,
     15, 6,

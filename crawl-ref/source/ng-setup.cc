@@ -277,7 +277,7 @@ static void _give_items_skills(const newgame_def& ng)
     give_job_skills(you.char_class);
 
     // Deep Dwarves get a wand of heal wounds (5).
-    if (you.species == SP_DEEP_DWARF)
+    if (you.species == SP_HELL_DWARF)
         newgame_make_item(OBJ_WANDS, WAND_HEAL_WOUNDS, 1, 5);
 
     if (you.species == SP_FELID)

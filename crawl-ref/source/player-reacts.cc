@@ -1265,7 +1265,7 @@ static void _regenerate_hp_and_mp(int delay)
 
     // Don't let DD use guardian spirit for free HP, since their
     // damage shaving is enough. (due, dpeg)
-    if (you.spirit_shield() && you.species == SP_DEEP_DWARF)
+    if (you.spirit_shield() && you.species == SP_HELL_DWARF)
         return;
 
     if (you.magic_points < you.max_magic_points)

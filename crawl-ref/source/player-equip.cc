@@ -766,7 +766,7 @@ static void _spirit_shield_message(bool unmeld)
     {
         dec_mp(you.magic_points);
         mpr("You feel your power drawn to a protective spirit.");
-        if (you.species == SP_DEEP_DWARF)
+        if (you.species == SP_HELL_DWARF)
             mpr("Now linked to your health, your magic stops regenerating.");
     }
     else if (!unmeld && player_mutation_level(MUT_MANA_SHIELD))
@@ -1039,7 +1039,7 @@ static void _unequip_armour_effect(item_def& item, bool meld,
         if (!you.spirit_shield())
         {
             mpr("You feel strangely alone.");
-            if (you.species == SP_DEEP_DWARF)
+            if (you.species == SP_HELL_DWARF)
                 mpr("Your magic begins regenerating once more.");
         }
         break;
@@ -1343,7 +1343,7 @@ static void _unequip_jewellery_effect(item_def &item, bool mesg, bool meld,
         break;
 
     case AMU_GUARDIAN_SPIRIT:
-        if (you.species == SP_DEEP_DWARF)
+        if (you.species == SP_HELL_DWARF)
             mpr("Your magic begins regenerating once more.");
         break;
     }

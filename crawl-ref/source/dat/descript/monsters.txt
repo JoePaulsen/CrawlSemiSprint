@@ -923,7 +923,7 @@ deep elf summoner
 
 A deep elf skilled at summoning plagues of insidious vermin.
 %%%%
-deep dwarf
+hell dwarf
 
 Pale and unnaturally tough-skinned, deep dwarves dwell far below ground and
 almost never emerge into the sunlit upper world.

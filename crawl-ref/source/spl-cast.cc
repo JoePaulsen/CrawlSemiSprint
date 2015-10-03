@@ -1499,7 +1499,7 @@ static void _spell_zap_effect(spell_type spell)
     // Casting pain costs 1 hp.
     // Deep Dwarves' damage reduction always blocks at least 1 hp.
     if (spell == SPELL_PAIN
-        && (you.species != SP_DEEP_DWARF && !player_res_torment()))
+        && (you.species != SP_HELL_DWARF && !player_res_torment()))
     {
         dec_hp(1, false);
     }

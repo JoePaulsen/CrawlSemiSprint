@@ -1026,7 +1026,7 @@ static monsterentry mondata[] =
 },
 
 {
-    MONS_DEEP_DWARF, 'g', LIGHTBLUE, "deep dwarf",
+    MONS_DEEP_DWARF, 'g', LIGHTBLUE, "hell dwarf",
     M_WARM_BLOOD | M_SPEAKS | M_NO_REGEN | M_NO_POLY_TO,
     MR_NO_FLAGS,
     10, MONS_DWARF, MONS_DEEP_DWARF, MH_NATURAL, 40,

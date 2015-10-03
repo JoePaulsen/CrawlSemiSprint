@@ -3967,7 +3967,7 @@ void inc_hp(int hp_gain, bool overrideDeepDwarf)
 {
     ASSERT(!crawl_state.game_is_arena());
 
-    if (you.species == SP_DEEP_DWARF && !overrideDeepDwarf) {
+    if (you.species == SP_HELL_DWARF && !overrideDeepDwarf) {
         hp_gain = 0;
     }
 
@@ -4402,7 +4402,7 @@ int get_player_poisoning()
     {
         // Approximate the effect of damage shaving by giving the first
         // 25 points of poison damage for 'free'
-        if (you.species == SP_DEEP_DWARF)
+        if (you.species == SP_HELL_DWARF)
             return max(0, (you.duration[DUR_POISONING] / 1000) - 25);
         else
             return you.duration[DUR_POISONING] / 1000;
@@ -4477,7 +4477,7 @@ void handle_player_poison(int delay)
     // of poison. Stronger poison will do the same damage as for non-DD
     // until it goes below the threshold, which is a bit weird, but
     // so is damage shaving.
-    if (you.species == SP_DEEP_DWARF && you.duration[DUR_POISONING] - decrease < 25000)
+    if (you.species == SP_HELL_DWARF && you.duration[DUR_POISONING] - decrease < 25000)
     {
        dmg = (you.duration[DUR_POISONING] / 1000)
               - (25000 / 1000);
@@ -4552,7 +4552,7 @@ int poison_survival()
         return you.hp;
     const int rr = player_regen();
     const bool chei = (you.religion == GOD_CHEIBRIADOS && you.piety >= piety_breakpoint(0));
-    const bool dd = (you.species == SP_DEEP_DWARF);
+    const bool dd = (you.species == SP_HELL_DWARF);
     const int amount = you.duration[DUR_POISONING];
     const double full_aut = _poison_dur_to_aut(amount);
     // Calculate the poison amount at which regen starts to beat poison.
@@ -5482,7 +5482,7 @@ bool player::is_sufficiently_rested() const
             || player_mutation_level(MUT_SLOW_HEALING) == 3
             || you.species == SP_VAMPIRE && you.hunger_state <= HS_STARVING)
         && (magic_points >= _rest_trigger_level(max_magic_points)
-            || you.spirit_shield() && you.species == SP_DEEP_DWARF);
+            || you.spirit_shield() && you.species == SP_HELL_DWARF);
 }
 
 bool player::in_water() const
