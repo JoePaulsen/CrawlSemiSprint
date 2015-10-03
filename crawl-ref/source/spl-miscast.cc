@@ -280,8 +280,8 @@ void MiscastEffect::do_miscast()
 
         severity /= 100;
         severity = random2(severity);
-        if (severity > 3)
-            severity = 3;
+        if (severity >= 3)
+            severity = 2;
         else if (severity < 0)
             severity = 0;
     }

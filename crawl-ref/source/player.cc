@@ -1075,6 +1075,9 @@ int player_teleport(bool calc_unid)
 
     // mutations
     tp += player_mutation_level(MUT_TELEPORT) * 4;
+    if (you.species == SP_FELID) {
+        tp += 20;
+    }
 
     return tp;
 }
@@ -1285,7 +1288,8 @@ int player_hunger_rate(bool temp)
 
 int player_spell_levels()
 {
-    int sl = you.experience_level - 1 + you.skill(SK_SPELLCASTING, 2, true);
+    int sl = you.skill(SK_SPELLCASTING, 4, true);
+    //int sl = you.experience_level - 1 + you.skill(SK_SPELLCASTING, 2, true);
 
     bool fireball = false;
     bool delayed_fireball = false;
@@ -5583,6 +5587,9 @@ void player::god_conduct(conduct_type thing_done, int level)
 
 void player::banish(actor* /*agent*/, const string &who)
 {
+    mpr("You resist the pull of the Abyss.");
+    return;
+
     ASSERT(!crawl_state.game_is_arena());
     if (brdepth[BRANCH_ABYSS] == -1)
         return;

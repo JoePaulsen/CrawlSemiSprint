@@ -1270,7 +1270,7 @@ static void _regenerate_hp_and_mp(int delay)
 
     if (you.magic_points < you.max_magic_points)
     {
-        const int base_val = 7 + you.max_magic_points / 2;
+        const int base_val = 5 + you.max_magic_points;
         int mp_regen_countup = div_rand_round(base_val * delay, BASELINE_DELAY);
         if (you.mutation[MUT_MANA_REGENERATION])
             mp_regen_countup *= 2;
@@ -1281,6 +1281,10 @@ static void _regenerate_hp_and_mp(int delay)
     {
         inc_mp(1);
         you.magic_points_regeneration -= 100;
+    }
+
+    if (you.species == SP_FELID) {
+        inc_mp(1);
     }
 
     ASSERT_RANGE(you.magic_points_regeneration, 0, 100);

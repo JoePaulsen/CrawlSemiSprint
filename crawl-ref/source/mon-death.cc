@@ -2099,6 +2099,9 @@ item_def* monster_die(monster* mons, killer_type killer,
                 if (gives_player_xp && !mons_is_object(mons->type)) {
                     int monExp = mons->get_experience_level();
                     int hp_heal = random2(max(0,(monExp*5)/4));
+                    if (coinflip()) {
+                        hp_heal++;
+                    }
                     if (monExp >= you.experience_level/3 - 1) {
                         inc_hp(hp_heal,true);
                     }
