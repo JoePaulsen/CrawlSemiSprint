@@ -2115,7 +2115,7 @@ static int _spell_power_bars(spell_type spell, bool rod)
     return power_to_barcount(power);
 }
 
-#ifdef WIZARD
+
 static string _wizard_spell_power_numeric_string(spell_type spell, bool rod)
 {
     const int cap = spell_power_cap(spell);
@@ -2124,22 +2124,11 @@ static string _wizard_spell_power_numeric_string(spell_type spell, bool rod)
     const int power = min(calc_spell_power(spell, true, false, false, rod), cap);
     return make_stringf("%d (%d)", power, cap);
 }
-#endif
+
 
 string spell_power_string(spell_type spell, bool rod)
 {
-#ifdef WIZARD
-    if (you.wizard)
-        return _wizard_spell_power_numeric_string(spell, rod);
-#endif
-
-    const int numbars = _spell_power_bars(spell, rod);
-    const int capbars = power_to_barcount(spell_power_cap(spell));
-    ASSERT(numbars <= capbars);
-    if (numbars < 0)
-        return "N/A";
-    else
-        return string(numbars, '#') + string(capbars - numbars, '.');
+    return _wizard_spell_power_numeric_string(spell, rod);
 }
 
 int calc_spell_range(spell_type spell, int power, bool rod)

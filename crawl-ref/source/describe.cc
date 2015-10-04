@@ -3284,7 +3284,8 @@ static void _print_bar(int value, int max, int scale,
         base_value = value;
 
     result << name << " ";
-
+    //screw this
+/*    
     const int cur_bars = value / scale;
     const int base_bars = base_value / scale;
     const int bars = cur_bars ? cur_bars : base_bars;
@@ -3315,7 +3316,9 @@ static void _print_bar(int value, int max, int scale,
 #ifdef DEBUG_DIAGNOSTICS
         result << " (" << base_value << ")";
 #endif
-    }
+    }*/
+
+    result << make_stringf("%d", value);
 
     result << "\n";
 }
