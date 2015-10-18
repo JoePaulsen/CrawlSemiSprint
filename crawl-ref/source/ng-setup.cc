@@ -29,6 +29,7 @@
 #include "spl-book.h"
 #include "spl-util.h"
 #include "state.h"
+#include "player.h"
 
 #define MIN_START_STAT       3
 
@@ -462,7 +463,7 @@ static void _setup_generic(const newgame_def& ng)
     if (you.species == SP_DEMONSPAWN)
         roll_demonspawn_mutations();
 
-    _give_starting_food();
+    //_give_starting_food();
 
     if (crawl_state.game_is_sprint())
         _give_bonus_items();
@@ -524,9 +525,10 @@ static void _setup_generic(const newgame_def& ng)
     // Generate the second name of Jiyva
     fix_up_jiyva_name();
 
+    you.init_aptitudeMutant();
+
     // Get rid of god companions left from previous games
     init_companions();
-
     // Create the save file.
     if (Options.no_save)
         you.save = new package();

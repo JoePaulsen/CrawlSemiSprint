@@ -5368,6 +5368,8 @@ player::player()
     clear_constricted();
     constricting = 0;
 
+    //aptitudesMutant.clear();
+    
     // Protected fields:
     for (branch_iterator it; it; ++it)
     {
@@ -5389,6 +5391,55 @@ void player::init_skills()
     skill_order.init(MAX_SKILL_ORDER);
     exercises.clear();
     exercises_all.clear();
+}
+
+void player::init_aptitudeMutant() {
+
+    for (int i = 0; i < NUM_SKILLS; i++) {
+        you.aptitudesMutant[i] = 0;
+    }
+
+    //choose 1 skill to be "exceptional"
+    //choose 2 to be very good
+    //choose 2 to be horrible
+    //rest is up to fate
+
+    //one exceptions...
+    you.aptitudesMutant[random2(NUM_SKILLS)] = random2(3) + 5;
+
+    //2 very good
+    int numVG = 2;
+    while (numVG > 0) {
+        int attempt = random2(NUM_SKILLS);
+        if (you.aptitudesMutant[attempt] != 0) {
+            numVG--;
+            you.aptitudesMutant[attempt] = random2(3) + 2;
+        }
+    }
+
+    int numVB = 2;
+    while (numVB > 0) {
+        int attempt = random2(NUM_SKILLS);
+        if (you.aptitudesMutant[attempt] != 0) {
+            numVB--;
+            you.aptitudesMutant[attempt] = random2(3) - 4;
+        }
+    }
+
+    for (int i = 0; i < NUM_SKILLS; i++) {
+        if (you.aptitudesMutant[i] == 0) {
+            you.aptitudesMutant[i] = random2(10) - 5;
+        }
+    }
+
+    you.aptitudesMutant[SK_FIGHTING] = random2(3) - 1;
+
+    //make sure at least some sort of defense "passable"
+    if (you.aptitudesMutant[SK_DODGING] < -2 && you.aptitudesMutant[SK_ARMOUR] < -2) {
+        int skill;
+        coinflip() ? skill = SK_DODGING : skill = SK_ARMOUR;
+        you.aptitudesMutant[skill] = random2(3) - 1;
+    }
 }
 
 player_save_info& player_save_info::operator=(const player& rhs)

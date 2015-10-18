@@ -156,6 +156,8 @@ public:
   FixedVector<int, NUM_TIMERS> last_timer_effect;
   FixedVector<int, NUM_TIMERS> next_timer_effect;
 
+  FixedVector<int, NUM_SKILLS> aptitudesMutant;
+
   bool dead; // ... but pending revival
   int lives;
   int deaths;
@@ -415,6 +417,7 @@ public:
     virtual ~player();
 
     void init_skills();
+    void init_aptitudeMutant();
 
     // Set player position without updating view geometry.
     void set_position(const coord_def &c);

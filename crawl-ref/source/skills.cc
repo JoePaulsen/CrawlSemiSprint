@@ -166,6 +166,14 @@ int calc_skill_cost(int skill_cost_level)
 // skill levels.
 void reassess_starting_skills()
 {
+    //silly hack is silly
+    int stupidExp[28] = { 0, 50, 150, 300, 500, 750,         // 0-5
+                          1050, 1400, 1800, 2250, 2800,      // 6-10
+                          3450, 4200, 5050, 6000, 7050,      // 11-15
+                          8200, 9450, 10800, 12300, 13950,   // 16-20
+                          15750, 17700, 19800, 22050, 24450, // 21-25
+                          27000, 29750 };
+
     // go backwards, need to do Dodging before Armour
     // "sk >= SK_FIRST_SKILL" might be optimised away, so do this differently.
     for (skill_type next = NUM_SKILLS; next > SK_FIRST_SKILL; )
@@ -175,7 +183,7 @@ void reassess_starting_skills()
 
         // Grant the amount of skill points required for a human.
         you.skill_points[sk] = you.skills[sk] ?
-            skill_exp_needed(you.skills[sk], sk, SP_HUMAN) + 1 : 0;
+            stupidExp[you.skills[sk]] + 1 : 1;
 
         if (sk == SK_DODGING && you.skills[SK_ARMOUR]
             && (is_useless_skill(SK_ARMOUR)
@@ -183,8 +191,7 @@ void reassess_starting_skills()
         {
             // No one who can't wear mundane heavy armour should start with
             // the Armour skill -- D:1 dragon armour is too unlikely.
-            you.skill_points[sk] += skill_exp_needed(you.skills[SK_ARMOUR],
-                SK_ARMOUR, SP_HUMAN) + 1;
+            you.skill_points[sk] += stupidExp[you.skills[sk]];
             you.skills[SK_ARMOUR] = 0;
         }
 
@@ -1443,7 +1450,7 @@ static float _apt_to_factor(int apt)
 
 unsigned int skill_exp_needed(int lev, skill_type sk, species_type sp)
 {
-    const int exp[28] = { 0, 50, 150, 300, 500, 750,         // 0-5
+    int exp[28] = { 0, 50, 150, 300, 500, 750,         // 0-5
                           1050, 1400, 1800, 2250, 2800,      // 6-10
                           3450, 4200, 5050, 6000, 7050,      // 11-15
                           8200, 9450, 10800, 12300, 13950,   // 16-20
@@ -1473,8 +1480,16 @@ int species_apt(skill_type skill, species_type species)
         spec_skills_initialised = true;
     }
 
-    return max(UNUSABLE_SKILL, _spec_skills[species][skill]
+
+    if (0/*species == SP_HUMAN*/) {
+        return max(UNUSABLE_SKILL, you.aptitudesMutant[skill]
                                - player_mutation_level(MUT_UNSKILLED));
+    } else{
+
+        return max(UNUSABLE_SKILL, _spec_skills[species][skill]
+                               - player_mutation_level(MUT_UNSKILLED));
+    }
+
 }
 
 float species_apt_factor(skill_type sk, species_type sp)
