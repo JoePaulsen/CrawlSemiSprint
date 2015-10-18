@@ -2601,6 +2601,11 @@ void gain_exp(unsigned int exp_gained, unsigned int* actual_gain)
     exp_gained *= 5;
     exp_gained /= 2;
 
+    //essentially no exp in abyss
+    if (player_in_branch(BRANCH_ABYSS) && exp_gained > 0) {
+        exp_gained = 1;
+    }
+
     if (crawl_state.game_is_arena())
         return;
 

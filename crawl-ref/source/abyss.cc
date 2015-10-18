@@ -55,7 +55,7 @@
 
 const coord_def ABYSS_CENTRE(GXM / 2, GYM / 2);
 
-static const int ABYSSAL_RUNE_MAX_ROLL = 200;
+static const int ABYSSAL_RUNE_MAX_ROLL = 40;
 static const int ABYSSAL_RUNE_MIN_LEVEL = 3;
 
 abyss_state abyssal_state;
@@ -335,6 +335,7 @@ static int _abyss_create_items(const map_bitmask &abyss_genlevel_mask,
                 // end of the item-gen pass. We may as a result create
                 // (num_items + 1) items instead of num_items, which
                 // is acceptable.
+
                 if (!placed_abyssal_rune && !should_place_abyssal_rune
                     && abyssal_rune_roll != -1
                     && x_chance_in_y(abyssal_rune_roll, ABYSSAL_RUNE_MAX_ROLL))
