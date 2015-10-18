@@ -3142,6 +3142,49 @@ static void _place_greedo_altars()
         }
         grd(pos) = _pick_an_altar();
     }
+
+
+    //tacking this onto this function and copy/pasting all to avoid a stuid .h file rebuilding the whole game
+    //fix this later when you ahve time
+    if (player_in_branch(BRANCH_DEPTHS)) {
+        int tries;
+        coord_def pos;
+        for (tries = 0; tries < 200; ++tries)
+        {
+            pos.x = random2(GXM);
+            pos.y = random2(GYM);
+            if (in_bounds(pos)
+                && grd(pos) == DNGN_FLOOR)
+            {
+                break;
+            }
+        }
+        grd(pos) = DNGN_ENTER_PANDEMONIUM;
+
+        for (tries = 0; tries < 200; ++tries)
+        {
+            pos.x = random2(GXM);
+            pos.y = random2(GYM);
+            if (in_bounds(pos)
+                && grd(pos) == DNGN_FLOOR)
+            {
+                break;
+            }
+        }
+        grd(pos) = DNGN_ENTER_HELL;
+
+        for (tries = 0; tries < 200; ++tries)
+        {
+            pos.x = random2(GXM);
+            pos.y = random2(GYM);
+            if (in_bounds(pos)
+                && grd(pos) == DNGN_FLOOR)
+            {
+                break;
+            }
+        }
+        grd(pos) = DNGN_ENTER_ABYSS;
+    }
 }
 
 static void _place_traps()
